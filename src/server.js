@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
@@ -12,11 +12,11 @@ const app = express();
 
 // express Global Middleware
 app.use(express.json());
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
-// Routes
-// app.use(foodRouter);
-// app.use(clothesRouter);
+// Routes/ CRUD
+app.use(foodRouter);
+app.use(clothesRouter);
 
 // Error Handlers - last to be added
 app.use('*', notFoundHandler);
